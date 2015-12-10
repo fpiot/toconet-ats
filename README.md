@@ -25,7 +25,7 @@ You need [ToCoNet SDK](http://mono-wireless.com/jp/products/ToCoNet/TWESDK.html)
 ```
 $ wget ftp://tocos-wireless.com/TWESDK_201408-31-2/TWESDK_201408-31_Linux.tar.bz2
 $ tar xf TWESDK_201408-31_Linux.tar.bz2
-$ export TWESDK=`pwd`TWESDK
+$ export TWESDK=`pwd`/TWESDK
 ```
 
 ### Mac OS X
