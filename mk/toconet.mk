@@ -27,8 +27,8 @@ APP_SRC_DIR 	    = $(APP_BASE)/$(TARGET_DIR)/Source
 APP_COMMON_SRC_DIR = $(APP_BASE)/Common/Source
 
 # TOCOS:additonal directories
-APP_STACK_SRC_DIR_ADD1 = $(APP_BASE)/../../Wks_libToCoNet/libToCoNet/include/ToCoNet
-APP_STACK_SRC_DIR_ADD2 = $(APP_BASE)/../../Wks_libToCoNet/libToCoNet/include/ToCoNetUtils 
+APP_STACK_SRC_DIR_ADD1 = $(TWESDK)/Wks_libToCoNet/libToCoNet/include/ToCoNet
+APP_STACK_SRC_DIR_ADD2 = $(TWESDK)/Wks_libToCoNet/libToCoNet/include/ToCoNetUtils
 
 ##############################################################################
 # Application Source files
@@ -38,14 +38,14 @@ APP_STACK_SRC_DIR_ADD2 = $(APP_BASE)/../../Wks_libToCoNet/libToCoNet/include/ToC
 # Additional Application Library
 
 ifeq ($(TOCONET_DEBUG),1)
-ADDITIONAL_LIBS += $(APP_BASE)/../../Wks_libToCoNet/libToCoNet/lib/libToCoNet_$(JENNIC_CHIP)_DBG.a
-ADDITIONAL_LIBS += $(APP_BASE)/../../Wks_libToCoNet/libToCoNet/lib/libToCoNetExt_$(JENNIC_CHIP)_DBG.a
-ADDITIONAL_LIBS += $(APP_BASE)/../../Wks_libToCoNet/libToCoNet/lib/libToCoNetUtils_$(JENNIC_CHIP).a
+ADDITIONAL_LIBS += $(TWESDK)/Wks_libToCoNet/libToCoNet/lib/libToCoNet_$(JENNIC_CHIP)_DBG.a
+ADDITIONAL_LIBS += $(TWESDK)/Wks_libToCoNet/libToCoNet/lib/libToCoNetExt_$(JENNIC_CHIP)_DBG.a
+ADDITIONAL_LIBS += $(TWESDK)/Wks_libToCoNet/libToCoNet/lib/libToCoNetUtils_$(JENNIC_CHIP).a
 TARGET_SUFF += _TDBG
 else
-ADDITIONAL_LIBS += $(APP_BASE)/../../Wks_libToCoNet/libToCoNet/lib/libToCoNet_$(JENNIC_CHIP).a
-ADDITIONAL_LIBS += $(APP_BASE)/../../Wks_libToCoNet/libToCoNet/lib/libToCoNetExt_$(JENNIC_CHIP).a
-ADDITIONAL_LIBS += $(APP_BASE)/../../Wks_libToCoNet/libToCoNet/lib/libToCoNetUtils_$(JENNIC_CHIP).a
+ADDITIONAL_LIBS += $(TWESDK)/Wks_libToCoNet/libToCoNet/lib/libToCoNet_$(JENNIC_CHIP).a
+ADDITIONAL_LIBS += $(TWESDK)/Wks_libToCoNet/libToCoNet/lib/libToCoNetExt_$(JENNIC_CHIP).a
+ADDITIONAL_LIBS += $(TWESDK)/Wks_libToCoNet/libToCoNet/lib/libToCoNetUtils_$(JENNIC_CHIP).a
 endif
 
 ##############################################################################
