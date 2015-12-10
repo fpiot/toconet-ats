@@ -8,12 +8,18 @@ T.B.D.
 
 ![](img/TWE-Lite.jpg)
 
-You can get it from モノワイヤレス株式会社 (only for Japan).
+* CPU: [OpenRISC 1200](https://en.wikipedia.org/wiki/OpenRISC_1200)
+* Flash ROM: 160 kB
+* SRAM: 32 kB
+* EEPROM: 4 kB
+* Network: [IEEE 802.15.4](https://en.wikipedia.org/wiki/IEEE_802.15.4)
+
+You can get it from following (only for Japan).
 
 * [TWE-Lite](http://mono-wireless.com/jp/products/TWE-001Lite.html)
 * [TWE-Lite DIP](http://mono-wireless.com/jp/products/TWE-Lite-DIP/index.html)
 
-And also you need firemware writer.
+And also you need following firemware writer.
 
 * [TWE-Lite R](http://mono-wireless.com/jp/products/TWE-Lite-R/index.html)
 
