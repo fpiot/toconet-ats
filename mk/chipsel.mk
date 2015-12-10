@@ -8,21 +8,21 @@ TWE_CHIP_MODEL ?= JN5164
 # Set SDK_BASE_DIR
 JENNIC_CHIP = $(word 1, $(TWE_CHIP_MODEL))
 ifeq ($(JENNIC_CHIP),JN5148)
-SDK_BASE_DIR   	 	= $(abspath ../../../../514x)
+SDK_BASE_DIR   	 	= $(abspath $(TWESDK)/514x)
 else ifeq ($(JENNIC_CHIP),JN5161)
-SDK_BASE_DIR   	 	= $(abspath ../../../../516x)
+SDK_BASE_DIR   	 	= $(abspath $(TWESDK)/516x)
 else ifeq ($(JENNIC_CHIP),JN5164)
-SDK_BASE_DIR   	 	= $(abspath ../../../../516x)
+SDK_BASE_DIR   	 	= $(abspath $(TWESDK)/516x)
 CFLAGS += -DEMBEDDED
 CFLAGS += -DUSER_VSR_HANDLER
 #CFLAGS += -DNO_NESTED_INTERRUPTS
 else ifeq ($(JENNIC_CHIP),JN5168)
-SDK_BASE_DIR   	 	= $(abspath ../../../../516x)
+SDK_BASE_DIR   	 	= $(abspath $(TWESDK)/516x)
 else
 $(error "Bad JENNIC_CHIP definition.")
 endif
 
-# some other 
+# some other
 DIRUP_LST = $(subst /, ,$(abspath ..))
 TARGET_DIR ?= $(word $(words $(DIRUP_LST)), $(DIRUP_LST))
 
