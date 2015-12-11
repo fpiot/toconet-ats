@@ -1,4 +1,4 @@
-# ATS programing on ToCoNet
+# ATS programing on ToCoNet [![Build Status](https://api.travis-ci.org/fpiot/toconet-ats.svg)](https://travis-ci.org/fpiot/toconet-ats)
 
 ## Demo code
 
