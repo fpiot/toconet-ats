@@ -17,7 +17,10 @@ addons:
   apt:
     packages:
     - git
+    - ia32-libs
+    - ia32-libs-multiarch
     - libgc-dev
+    - libgd2-xpm
     - libgmp-dev
     - make
     - wget
