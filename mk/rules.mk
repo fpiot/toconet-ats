@@ -64,13 +64,13 @@ LDLIBS := $(addsuffix _$(JENNIC_CHIP_FAMILY),$(APPLIBS)) $(LDLIBS)
 #########################################################################
 # Main Section
 
-.PHONY: all clean
+.PHONY: all clean write
 # Path to directories containing application source 
 vpath % $(APP_SRC_DIR):$(APP_COMMON_SRC_DIR):$(ADDITIONAL_SRC_DIR):$(APP_STACK_SRC_DIR_ADD1):$(APP_STACK_SRC_DIR_ADD2):$(APP_COMMON_SRC_DIR_ADD1):$(APP_COMMON_SRC_DIR_ADD2):$(APP_COMMON_SRC_DIR_ADD3):$(APP_COMMON_SRC_DIR_ADD4)
 
-all: objdir $(TARGET_BIN).$(TARGET_TYPE) $(ADDITIONAL_LIBS)
+all: $(OBJDIR) $(TARGET_BIN).$(TARGET_TYPE) $(ADDITIONAL_LIBS)
 
-objdir:
+$(OBJDIR):
 	-mkdir -p $(OBJDIR)
 
 -include $(APPDEPS)
@@ -108,5 +108,11 @@ $(TARGET_BIN).a: $(APPOBJS)
 
 clean:
 	@rm -rf $(OBJDIR) $(TARGET_BIN).bin $(TARGET_BIN).a
+
+#########################################################################
+
+write: $(TARGET_BIN).bin
+	$(TWESDK)/Tools/jenprog/jenprog_1_3/jenprog.py -t /dev/ttyUSB0 -s
+	$(TWESDK)/Tools/jenprog/jenprog_1_3/jenprog.py -t /dev/ttyUSB0 -v $<
 
 #########################################################################
