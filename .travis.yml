@@ -1,0 +1,41 @@
+sudo: false
+env:
+  # Target commit for https://github.com/pfalcon/esp-open-sdk/
+  TWESDK_ARCHIVE="TWESDK_201408-31_Linux.tar.bz2"
+  TWESDK_URL="ftp://tocos-wireless.com/TWESDK_201408-31-2/${TWESDK_ARCHIVE}"
+  TWESDK="${HOME}/TWESDK"
+  ATSHOME="${HOME}/ats-lang-anairiats-0.2.12"
+  ATSHOMERELOC="ATS-0.2.12"
+  PATSHOME="${HOME}/ATS-Postiats"
+  PATSHOMERELOC="${HOME}/ATS-Postiats-contrib"
+  PATH=${PATH}:${PATSHOME}/bin
+cache:
+  directories:
+    - ${HOME}/${TWESDK_ARCHIVE}
+addons:
+  apt:
+    packages:
+    - git
+    - libgc-dev
+    - libgmp-dev
+    - make
+    - wget
+
+before_install:
+  - cd ${HOME}
+  - export HAS_TC="test -f ${HOME}/${TWESDK_ARCHIVE}"
+  - ${HAS_TC} || wget ${TWESDK_URL}
+  - ${HAS_TC} || tar xf ${TWESDK_ARCHIVE}
+  # Get ATS source code
+  - cd ${HOME}
+  - git clone https://github.com/githwxi/ATS-Postiats.git
+  - git clone https://github.com/githwxi/ATS-Postiats-contrib.git
+  # Build ATS1
+  - ${HOME}/ATS-Postiats/travis-ci/ats1_setup.sh 0.2.12
+  - cd ${ATSHOME} && ./configure && make
+  # Build ATS2
+  - cd ${PATSHOME} && make -f codegen/Makefile_atslib && make -f Makefile_devl src_depend && make -f Makefile_devl all
+
+script:
+  - cd ${TRAVIS_BUILD_DIR}
+  - make
