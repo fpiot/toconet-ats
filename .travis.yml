@@ -4,6 +4,7 @@ env:
   TWESDK_ARCHIVE="TWESDK_201408-31_Linux"
   TWESDK_URL="ftp://tocos-wireless.com/TWESDK_201408-31-2/${TWESDK_ARCHIVE}.tar.bz2"
   TWESDK="${HOME}/${TWESDK_ARCHIVE}"
+  TWESDK_TOOLSDIR="${TWESDK}/Tools"
   ATSHOME="${HOME}/ats-lang-anairiats-0.2.12"
   ATSHOMERELOC="ATS-0.2.12"
   PATSHOME="${HOME}/ATS-Postiats"
@@ -26,7 +27,7 @@ addons:
 
 before_install:
   - cd ${HOME}
-  - export HAS_TC="test -d ${TWESDK}"
+  - export HAS_TC="test -d ${TWESDK_TOOLSDIR}"
   - ${HAS_TC} || wget ${TWESDK_URL}
   - ${HAS_TC} || tar xfj ${TWESDK_ARCHIVE}.tar.bz2
   - ${HAS_TC} || mv TWESDK/* ${TWESDK}/
