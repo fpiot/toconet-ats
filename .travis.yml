@@ -10,7 +10,7 @@ env:
   PATSHOMERELOC="${HOME}/ATS-Postiats-contrib"
   PATH=${PATH}:${PATSHOME}/bin
 cache:
-  directories:
+  files:
     - ${HOME}/${TWESDK_ARCHIVE}
 addons:
   apt:
