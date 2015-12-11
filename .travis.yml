@@ -1,18 +1,17 @@
 language: c
 sudo: false
 env:
-  # Target commit for https://github.com/pfalcon/esp-open-sdk/
-  TWESDK_ARCHIVE="TWESDK_201408-31_Linux.tar.bz2"
-  TWESDK_URL="ftp://tocos-wireless.com/TWESDK_201408-31-2/${TWESDK_ARCHIVE}"
-  TWESDK="${HOME}/TWESDK"
+  TWESDK_ARCHIVE="TWESDK_201408-31_Linux"
+  TWESDK_URL="ftp://tocos-wireless.com/TWESDK_201408-31-2/${TWESDK_ARCHIVE}.tar.bz2"
+  TWESDK="${HOME}/${TWESDK_ARCHIVE}"
   ATSHOME="${HOME}/ats-lang-anairiats-0.2.12"
   ATSHOMERELOC="ATS-0.2.12"
   PATSHOME="${HOME}/ATS-Postiats"
   PATSHOMERELOC="${HOME}/ATS-Postiats-contrib"
   PATH=${PATH}:${PATSHOME}/bin
 cache:
-  files:
-    - ${HOME}/${TWESDK_ARCHIVE}
+  directories:
+    - ${TWESDK}
 addons:
   apt:
     packages:
@@ -27,9 +26,10 @@ addons:
 
 before_install:
   - cd ${HOME}
-  - export HAS_TC="test -f ${HOME}/${TWESDK_ARCHIVE}"
+  - export HAS_TC="test -d ${TWESDK}"
   - ${HAS_TC} || wget ${TWESDK_URL}
-  - tar xfj ${TWESDK_ARCHIVE}
+  - ${HAS_TC} || tar xfj ${TWESDK_ARCHIVE}.tar.bz2
+  - ${HAS_TC} || mv TWESDK/* ${TWESDK}/
   # Get ATS source code
   - cd ${HOME}
   - git clone https://github.com/githwxi/ATS-Postiats.git
@@ -41,6 +41,5 @@ before_install:
   - cd ${PATSHOME} && make -f codegen/Makefile_atslib && make -f Makefile_devl src_depend && make -f Makefile_devl all
 
 script:
-  - ls ${TWESDK}
   - cd ${TRAVIS_BUILD_DIR}
   - make
