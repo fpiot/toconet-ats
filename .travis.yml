@@ -25,7 +25,7 @@ before_install:
   - cd ${HOME}
   - export HAS_TC="test -f ${HOME}/${TWESDK_ARCHIVE}"
   - ${HAS_TC} || wget ${TWESDK_URL}
-  - ${HAS_TC} || tar xf ${TWESDK_ARCHIVE}
+  - tar xfj ${TWESDK_ARCHIVE}
   # Get ATS source code
   - cd ${HOME}
   - git clone https://github.com/githwxi/ATS-Postiats.git
