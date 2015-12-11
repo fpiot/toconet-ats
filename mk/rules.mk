@@ -99,7 +99,7 @@ $(TARGET_BIN).bin: $(OBJDIR)/$(TARGET_BIN).elf
 	@echo
 	$(info Generating binary ...)
 	$(OBJCOPY) -S -O binary $< $@
-	
+
 $(TARGET_BIN).a: $(APPOBJS)
 	rm -f $(TARGET).a
 	$(AR) $(ARFLAGS) $@ $(APPOBJS) $(ADDITIONAL_OBJS)
@@ -107,6 +107,6 @@ $(TARGET_BIN).a: $(APPOBJS)
 #########################################################################
 
 clean:
-	@rm -rf $(OBJDIR) $(TARGET_BIN)
-	
+	@rm -rf $(OBJDIR) $(TARGET_BIN).bin $(TARGET_BIN).a
+
 #########################################################################
