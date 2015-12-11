@@ -1,3 +1,4 @@
+language: c
 sudo: false
 env:
   # Target commit for https://github.com/pfalcon/esp-open-sdk/
@@ -37,5 +38,6 @@ before_install:
   - cd ${PATSHOME} && make -f codegen/Makefile_atslib && make -f Makefile_devl src_depend && make -f Makefile_devl all
 
 script:
+  - ls ${TWESDK}
   - cd ${TRAVIS_BUILD_DIR}
   - make
