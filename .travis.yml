@@ -1,9 +1,10 @@
+language: c
 sudo: false
 env:
-  # Target commit for https://github.com/pfalcon/esp-open-sdk/
-  TWESDK_ARCHIVE="TWESDK_201408-31_Linux.tar.bz2"
-  TWESDK_URL="ftp://tocos-wireless.com/TWESDK_201408-31-2/${TWESDK_ARCHIVE}"
-  TWESDK="${HOME}/TWESDK"
+  TWESDK_ARCHIVE="TWESDK_201408-31_Linux"
+  TWESDK_URL="ftp://tocos-wireless.com/TWESDK_201408-31-2/${TWESDK_ARCHIVE}.tar.bz2"
+  TWESDK="${HOME}/${TWESDK_ARCHIVE}"
+  TWESDK_TOOLSDIR="${TWESDK}/Tools"
   ATSHOME="${HOME}/ats-lang-anairiats-0.2.12"
   ATSHOMERELOC="ATS-0.2.12"
   PATSHOME="${HOME}/ATS-Postiats"
@@ -11,21 +12,25 @@ env:
   PATH=${PATH}:${PATSHOME}/bin
 cache:
   directories:
-    - ${HOME}/${TWESDK_ARCHIVE}
+    - ${TWESDK}
 addons:
   apt:
     packages:
     - git
+    - ia32-libs
+    - ia32-libs-multiarch
     - libgc-dev
+    - libgd2-xpm
     - libgmp-dev
     - make
     - wget
 
 before_install:
   - cd ${HOME}
-  - export HAS_TC="test -f ${HOME}/${TWESDK_ARCHIVE}"
+  - export HAS_TC="test -d ${TWESDK_TOOLSDIR}"
   - ${HAS_TC} || wget ${TWESDK_URL}
-  - ${HAS_TC} || tar xf ${TWESDK_ARCHIVE}
+  - ${HAS_TC} || tar xfj ${TWESDK_ARCHIVE}.tar.bz2
+  - ${HAS_TC} || mv TWESDK/* ${TWESDK}/
   # Get ATS source code
   - cd ${HOME}
   - git clone https://github.com/githwxi/ATS-Postiats.git
