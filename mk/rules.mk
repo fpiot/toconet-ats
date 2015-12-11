@@ -112,7 +112,7 @@ clean:
 #########################################################################
 
 write: $(TARGET_BIN).bin
-	$(TWESDK)/Tools/jenprog/jenprog_1_3/jenprog.py -t /dev/ttyUSB0 -s
-	$(TWESDK)/Tools/jenprog/jenprog_1_3/jenprog.py -t /dev/ttyUSB0 -v $<
+	$(TWESDK)/Tools/jenprog/jenprog_1_3/jenprog.py -t $(SERIAL_PORT) -s
+	$(TWESDK)/Tools/jenprog/jenprog_1_3/jenprog.py -t $(SERIAL_PORT) -v $<
 
 #########################################################################
