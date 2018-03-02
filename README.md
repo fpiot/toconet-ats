@@ -26,10 +26,10 @@ And also you need following firemware writer.
 ## Setup environment
 ### [Debian GNU/Linux](https://www.debian.org/)
 
-You need [ToCoNet SDK](http://mono-wireless.com/jp/products/ToCoNet/TWESDK.html) to build this product.
+You need [ToCoNet SDK](https://mono-wireless.com/jp/products/TWE-NET/TWESDK.html) to build this product.
 
 ```
-$ wget ftp://tocos-wireless.com/TWESDK_201408-31-2/TWESDK_201408-31_Linux.tar.bz2
+$ wget https://mono-wireless.com/download/SDK/TWESDK_201408-31-2/TWESDK_201408-31_Linux.tar.bz2
 $ tar xf TWESDK_201408-31_Linux.tar.bz2
 $ export TWESDK=`pwd`/TWESDK
 ```
